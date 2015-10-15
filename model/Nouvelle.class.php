@@ -43,8 +43,8 @@
         $nodeList = $item->getElementsByTagName('description');
         $this->description  = $nodeList->item(0)->textContent;
 
-        $nodeList = $item->getElementsByTagName('enclosure');
-        $this->image  = $nodeList->item(0)->textContent;
+        //$nodeList = $item->getElementsByTagName('enclosure');
+        //$this->image  = $nodeList->item(0)->textContent;
 
         // A FINIR
 
