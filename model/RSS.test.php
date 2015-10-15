@@ -11,6 +11,12 @@
       // Affiche le titre
       echo $rss->titre()."\n";
 
+
+      // Il semblerais que nouvelles ne contienne qu'une seule "nouvelle" et non pas une liste de "nouvelle"
+      $nouvelles = $rss->nouvelles();
+
+      var_dump($nouvelles);
+
       
 
 ?>

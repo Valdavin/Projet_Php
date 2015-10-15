@@ -1,10 +1,10 @@
 <?php
 	class nouvelle {
-		private $titre			//	Titre de la nouvelle
-		private $description	//	Description de la nouvelle
-		private $link			//	URL de la nouvelle
-		private $date			// 	Date de publication
-		private $image			//	URL (ou pas ?) de l'image
+		private $titre;			//	Titre de la nouvelle
+		private $description;	//	Description de la nouvelle
+		private $link;			//	URL de la nouvelle
+		private $date;			// 	Date de publication
+		private $image;			//	URL (ou pas ?) de l'image
 
 
         // Contructeur
@@ -44,7 +44,7 @@
         $this->description  = $nodeList->item(0)->textContent;
 
         //$nodeList = $item->getElementsByTagName('enclosure');
-        //$this->image  = $nodeList->item(0)->textContent;
+        //$this->image  = $nodeList->item(0)->textContent;          Chaud frère, on dois vraiment mettre les image là ?(je me parle a moi même lol)
 
         // A FINIR
 

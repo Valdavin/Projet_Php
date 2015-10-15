@@ -30,30 +30,35 @@ class RSS {
         // Autres methodes
 
         function update() {
-		    // Cree un objet pour accueillir le contenu du RSS : un document XML
-          $doc = new DOMDocument;
+            echo "Url = ".$this->url."\n";
+            require_once('Nouvelle.class.php');
+  		      // Cree un objet pour accueillir le contenu du RSS : un document XML
+            $doc = new DOMDocument;
 
-		    //Telecharge le fichier XML dans $rss
-          $doc->load($this->url);
+  		      //Telecharge le fichier XML dans $rss
+            $doc->load($this->url);
 
-		    // Recupère la liste (DOMNodeList) de tous les elements de l'arbre 'title'
-          $nodeList = $doc->getElementsByTagName('title');
+  		      // Recupère la liste (DOMNodeList) de tous les elements de l'arbre 'title'
+            $nodeList = $doc->getElementsByTagName('title');
 
-		    // Met à jour le titre dans l'objet
-          $this->titre = $nodeList->item(0)->textContent;
+  		      // Met à jour le titre dans l'objet
+            $this->titre = $nodeList->item(0)->textContent;
 
-		    // Recupère la liste (DOMNodeList) de tous les elements de l'arbre 'title'
-          $nodeList = $doc->getElementsByTagName('date');
+  		      // Recupère la liste (DOMNodeList) de tous les elements de l'arbre 'title'
+            $nodeList = $doc->getElementsByTagName('pubDate');
 
-		    // Met à jour la date dans l'objet
-          $this->date = $nodeList->item(0)->textContent;
+  		      // Met à jour la date dans l'objet
+            $this->date = $nodeList->item(0)->textContent;
+            var_dump($doc);
+            $docNodeList =  $doc->getElementsByTagName('item');
+            var_dump($docNodeList);
 
-          $docNodeList =  $doc->getElementsByTagName('item');
-          foreach ($docNodeList as $nouvelle) {     
-            $this->nouvelles->update($nouvelle);
+            // VALENTIN -> J'ai modifier certain trucs, néamoins il semblerais que nouvelles ne contienne qu'une seule "nouvelle" et non pas une liste de "nouvelle"
+            $this->nouvelles = new Nouvelle();
+            foreach ($docNodeList as $nouvelle) {     
+              $this->nouvelles->update($nouvelle);
+            }
 
-
-          }
         }
         
       }
