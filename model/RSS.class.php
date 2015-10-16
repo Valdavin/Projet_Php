@@ -55,10 +55,14 @@ class RSS {
 
             // VALENTIN -> J'ai modifier certain trucs, néamoins il semblerais que nouvelles ne contienne qu'une seule "nouvelle" et non pas une liste de "nouvelle"
             $table = array();
-            
-            foreach ($docNodeList as $nouvelle) {     
-              $table[]= $nouvelle;
-              
+            $nomLocalImage = 1;
+            foreach ($docNodeList as $nouvelle) {
+              $tempNouvelle = new Nouvelle();
+              $tempNouvelle->update($nouvelle);
+              $tempNouvelle->downloadImage($nouvelle,$nomLocalImage);
+
+              $nomLocalImage++;
+              $table[]= $tempNouvelle;
             }
             $this->nouvelles=$table;
 
