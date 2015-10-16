@@ -14,11 +14,12 @@
 
       // Il semblerais que nouvelles ne contienne qu'une seule "nouvelle" et non pas une liste de "nouvelle"
       $nouvelles = $rss->nouvelles();
+
+
       var_dump($nouvelles);
-      echo "Swag"."\n";
-       foreach ($nouvelles as $n) { 
-       		var_dump($n->titre());
-       }
+
+      
+
       
 
 ?>
