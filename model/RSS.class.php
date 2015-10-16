@@ -59,6 +59,8 @@ class RSS {
               $this->nouvelles->update($nouvelle);
             }
 
+            
+
         }
         
       }

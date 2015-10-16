@@ -34,20 +34,34 @@
 
         function update(DOMElement $item) {
 
-        $nodeList = $item->getElementsByTagName('title');
-        $this->titre    = $nodeList->item(0)->textContent;
+	        $nodeList = $item->getElementsByTagName('title');
+	        $this->titre    = $nodeList->item(0)->textContent;
 
-        $nodeList = $item->getElementsByTagName('pubDate');
-        $this->date  = $nodeList->item(0)->textContent;
+	        $nodeList = $item->getElementsByTagName('pubDate');
+	        $this->date  = $nodeList->item(0)->textContent;
 
-        $nodeList = $item->getElementsByTagName('description');
-        $this->description  = $nodeList->item(0)->textContent;
+	        $nodeList = $item->getElementsByTagName('description');
+	        $this->description  = $nodeList->item(0)->textContent;
 
-        //$nodeList = $item->getElementsByTagName('enclosure');
-        //$this->image  = $nodeList->item(0)->textContent;          Chaud frère, on dois vraiment mettre les image là ?(je me parle a moi même lol)
+	        // A FINIR
 
-        // A FINIR
+      	}
 
+      	function dowloadImage(DOMElement $item, $imageId) {
+      		$nodeList = $item->getElementsByTagName('enclosure');
+	        $this->image  = $nodeList->item(0)->textContent;
+	        if($nodeList->length != 0) {
+				$node = $nodeList->item(0);
+
+				$node = $node->attributes->getNamedItem('url');
+				if ($node != NULL) {
+					$url = $node->nodeValue;
+					$image = 'images/'.$imageId.'.jpg';
+					file_put_contents($image, file_get_contents($url));
+				} else {
+					$this->image = "";
+				}
+			}
       	}
 
 	}
