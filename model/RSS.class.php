@@ -54,10 +54,13 @@ class RSS {
             var_dump($docNodeList);
 
             // VALENTIN -> J'ai modifier certain trucs, néamoins il semblerais que nouvelles ne contienne qu'une seule "nouvelle" et non pas une liste de "nouvelle"
-            $this->nouvelles = new Nouvelle();
+            $table = array();
+            
             foreach ($docNodeList as $nouvelle) {     
-              $this->nouvelles->update($nouvelle);
+              $table[]= $nouvelle;
+              
             }
+            $this->nouvelles=$table;
 
         }
         
