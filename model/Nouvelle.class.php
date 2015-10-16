@@ -49,15 +49,14 @@
 
       	function downloadImage(DOMElement $item, $imageId) {
       		$nodeList = $item->getElementsByTagName('enclosure');
-	        $this->image  = $nodeList->item(0)->textContent;
 	        if($nodeList->length != 0) {
 				$node = $nodeList->item(0);
 
 				$node = $node->attributes->getNamedItem('url');
 				if ($node != NULL) {
 					$url = $node->nodeValue;
-					$tmpImage = './images/'.$imageId.'.jpg';
-					file_put_contents($tmpImage, file_get_contents($url));
+					$this->image = './images/'.$imageId.'.jpg';
+					file_put_contents($this->image, file_get_contents($url));
 				} else {
 					$this->image = "";
 				}
