@@ -1,5 +1,5 @@
 <?php
-	class nouvelle {
+class nouvelle {
 		private $titre;			//	Titre de la nouvelle
 		private $description;	//	Description de la nouvelle
 		private $link;			//	URL de la nouvelle
@@ -12,44 +12,44 @@
 
 
         // Getters
-        function titre() {
-        	return $this->titre;
-        }
+		function titre() {
+			return $this->titre;
+		}
 
-        function description() {
-        	return $this->description;
-        }
+		function description() {
+			return $this->description;
+		}
 
-        function link() {
-        	return $this->link;
-        }
+		function link() {
+			return $this->link;
+		}
 
-        function date() {
-        	return $this->date;
-        }
+		function date() {
+			return $this->date;
+		}
 
-        function image() {
-        	return $this->image;
-        }
+		function image() {
+			return $this->image;
+		}
 
-        function update(DOMElement $item) {
+		function update(DOMElement $item) {
 
-	        $nodeList = $item->getElementsByTagName('title');
-	        $this->titre    = $nodeList->item(0)->textContent;
+			$nodeList = $item->getElementsByTagName('title');
+			$this->titre    = $nodeList->item(0)->textContent;
 
-	        $nodeList = $item->getElementsByTagName('pubDate');
-	        $this->date  = $nodeList->item(0)->textContent;
+			$nodeList = $item->getElementsByTagName('pubDate');
+			$this->date  = $nodeList->item(0)->textContent;
 
-	        $nodeList = $item->getElementsByTagName('description');
-	        $this->description  = $nodeList->item(0)->textContent;
+			$nodeList = $item->getElementsByTagName('description');
+			$this->description  = $nodeList->item(0)->textContent;
 
 	        // A FINIR
 
-      	}
+		}
 
-      	function downloadImage(DOMElement $item, $imageId) {
-      		$nodeList = $item->getElementsByTagName('enclosure');
-	        if($nodeList->length != 0) {
+		function downloadImage(DOMElement $item, $imageId) {
+			$nodeList = $item->getElementsByTagName('enclosure');
+			if($nodeList->length != 0) {
 				$node = $nodeList->item(0);
 
 				$node = $node->attributes->getNamedItem('url');
@@ -61,8 +61,8 @@
 					$this->image = "";
 				}
 			}
-      	}
+		}
 
 	}
 
-?>
+	?>
