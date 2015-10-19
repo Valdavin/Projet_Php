@@ -53,7 +53,7 @@ class RSS {
             $docNodeList =  $doc->getElementsByTagName('item');
             var_dump($docNodeList);
 
-            // VALENTIN -> J'ai modifier certain trucs, néamoins il semblerais que nouvelles ne contienne qu'une seule "nouvelle" et non pas une liste de "nouvelle"
+            
             $table = array();
             $nomLocalImage = 1;
             foreach ($docNodeList as $nouvelle) {

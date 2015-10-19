@@ -12,12 +12,30 @@
       echo $rss->titre()."\n";
 
 
-      // Il semblerais que nouvelles ne contienne qu'une seule "nouvelle" et non pas une liste de "nouvelle"
+      
       $nouvelles = $rss->nouvelles();
 
 
-      var_dump($nouvelles);
+      //var_dump($nouvelles);
 
+      ?>
+      <h2> Choix de vues </h2>
+      <form>
+            <input type="submit" name="envoyer" value="image1">
+            <input type="submit" name="envoyer" value="image2">            
+      </form>     
+      <?php
+
+      if (isset($_GET["envoyer"])) {
+            if ($_GET["envoyer"] == "image1") {
+                  include("../view/uniquementImage.view.php");
+            } elseif ($_GET["envoyer"] == "image2") {
+                  include("../view/imageTitreDesc.view.php");
+            }
+      }
+
+
+      
       
 
       
