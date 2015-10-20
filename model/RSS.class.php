@@ -30,7 +30,7 @@ class RSS {
         // Autres methodes
 
         function update() {
-            echo "Url = ".$this->url."\n";
+
             require_once('Nouvelle.class.php');
   		      // Cree un objet pour accueillir le contenu du RSS : un document XML
             $doc = new DOMDocument;
@@ -49,10 +49,9 @@ class RSS {
 
   		      // Met à jour la date dans l'objet
             $this->date = $nodeList->item(0)->textContent;
-            var_dump($doc);
-            $docNodeList =  $doc->getElementsByTagName('item');
-            var_dump($docNodeList);
 
+            $docNodeList =  $doc->getElementsByTagName('item');
+            
             
             $table = array();
             $nomLocalImage = 1;
@@ -65,7 +64,7 @@ class RSS {
               $table[]= $tempNouvelle;
             }
             $this->nouvelles=$table;
-
+            
             
 
         }

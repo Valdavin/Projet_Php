@@ -9,7 +9,7 @@
       $rss->update();
 
       // Affiche le titre
-      echo $rss->titre()."\n";
+     // echo $rss->titre()."\n";
 
 
       

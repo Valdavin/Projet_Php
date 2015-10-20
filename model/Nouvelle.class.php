@@ -43,8 +43,6 @@ class nouvelle {
 			$nodeList = $item->getElementsByTagName('description');
 			$this->description  = $nodeList->item(0)->textContent;
 
-	        // A FINIR
-
 		}
 
 		function downloadImage(DOMElement $item, $imageId) {
