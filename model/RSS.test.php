@@ -22,7 +22,8 @@
       <h2> Choix de vues </h2>
       <form>
             <input type="submit" name="envoyer" value="image1">
-            <input type="submit" name="envoyer" value="image2">            
+            <input type="submit" name="envoyer" value="image2">
+            <input type="submit" name="envoyer" value="Flux url">              
       </form>     
       <?php
 
@@ -31,6 +32,10 @@
                   include("../view/uniquementImage.view.php");
             } elseif ($_GET["envoyer"] == "image2") {
                   include("../view/imageTitreDesc.view.php");
+            } elseif ($_GET["envoyer"] == "Flux url") {
+                  //include("../view/affichage_flux.view.php");
+                  include("../controler/afficher_flux.ctrl.php");
+
             }
       }
 
