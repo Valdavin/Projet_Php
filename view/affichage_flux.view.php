@@ -6,9 +6,8 @@
 		<h1> Seulement Url </h1>
 		<hr>
 		<?php
-		 foreach ($flux as $r) {
-		 	$r->update();
-		 	echo "<a href = \"".$r->url()."\">".$r->titre();
+		 foreach ($nouvelles as $img) {
+		 	echo "<a href = \"".$img->link()."\">".$img->description();
 		 	echo "<br><br>";
       	}
       	?>
