@@ -37,6 +37,7 @@ class RSS {
         function update() {
 
             require_once('Nouvelle.class.php');
+            require_once('DAO.class.php');
   		      // Cree un objet pour accueillir le contenu du RSS : un document XML
             $doc = new DOMDocument;
 
@@ -57,14 +58,16 @@ class RSS {
 
             $docNodeList =  $doc->getElementsByTagName('item');
             
-            
+            $dao = new DAO();
+            $dao->createRSS($this->url);
+            $id = $dao->returnIdFromURL($this->url);
             $table = array();
             $nomLocalImage = 1;
             foreach ($docNodeList as $nouvelle) {
               $tempNouvelle = new Nouvelle();
               $tempNouvelle->update($nouvelle);
               $tempNouvelle->downloadImage($nouvelle,$nomLocalImage);
-
+              $dao -> createNouvelle($tempNouvelle, $id);
               $nomLocalImage++;
               $table[]= $tempNouvelle;
             }

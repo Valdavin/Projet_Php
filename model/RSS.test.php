@@ -5,6 +5,7 @@
       // Une instance de RSS
       $rss = new RSS();
       $rss->createRSS('http://www.lemonde.fr/m-actu/rss_full.xml');
+      $rss->createRSS('http://feeds.feedburner.com/Koreus-articles');
 	//$rss = new RSS('http://feeds.feedburner.com/Koreus-articles');
       // Charge le flux depuis le réseau
       $rss->update();
