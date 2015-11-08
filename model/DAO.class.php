@@ -1,6 +1,5 @@
 <?php 
 class DAO {
-
         private $db; // L'objet de la base de donnée
 
         // Ouverture de la base de donnée
@@ -21,6 +20,7 @@ class DAO {
         // Crée un nouveau flux à partir d'une URL
         // Si le flux existe déjà on ne le crée pas
         function createRSS($url) {
+<<<<<<< HEAD
           $rss = $this->readRSSfromURL($url);
           if ($rss == NULL) {
             try {
@@ -55,27 +55,29 @@ class DAO {
         // Renvois une liste des flux
         function allRSS() {
           $q = "SELECT * FROM RSS WHERE URL != ''";
+=======
+         $rss = $this->readRSSfromURL($url);
+         if ($rss == NULL) {
+>>>>>>> 70dd507b5cf51a939499f5f3e660a29f078ade64
           try {
-            $r = $this->db->query($q);
-            $result=$r->fetchAll(PDO::FETCH_CLASS, "RSS");
-            
-            if($result != NULL) {
-              $i=0;
-              foreach($result as $value){
-                
-                $table[$i]=$value;
-                $i++;
-              }
-              return $table;
-            } else {
-              return NULL;
-            }
-          } catch (PDOException $e) {
-            die("PDO Error :".$e->getMessage());
-          }
-        }
+           $q = "INSERT INTO RSS (url) VALUES ('$url')";
+           $r = $this->db->exec($q);
+           printf(" l %d l ",$r);
+            if ($r == 0) {
+             die("createRSS error: no rss inserted\n");
+           }
+          return $this->readRSSfromURL($url);
+        } catch (PDOException $e) {
+         die("PDO Error :".$e->getMessage());
+       }
+     } else {
+            // Retourne l'objet existant
+      return $rss;
+    }
+  }
 
         // Acces à un objet RSS à partir de son URL
+<<<<<<< HEAD
         function readRSSfromURL($url) {
           require_once('RSS.class.php');
           try {
@@ -93,12 +95,24 @@ class DAO {
             } else {
               return NULL;
             }
+=======
+  function readRSSfromURL($url) {
+>>>>>>> 70dd507b5cf51a939499f5f3e660a29f078ade64
 
-          } catch (PDOException $e) {
-            die("PDO Error :".$e->getMessage());
-          }
+   try {
+    $q = "SELECT * FROM RSS WHERE url=('$url')";
+    $r = $this->db->query($q);
+        if ($r == NULL) {
+             return(NULL);
         }
+    $r=$r->fetchAll(PDO::FETCH_CLASS, "RSS");
+    var_dump($r);
+   return $r;
+ } catch (PDOException $e) {
+  die("PDO Error :".$e->getMessage());
+}
 
+<<<<<<< HEAD
         function readRSSfromID($id) {
           require_once('RSS.class.php');
           try {
@@ -136,6 +150,24 @@ class DAO {
             die("PDO Error :".$e->getMessage());
           }
         } 
+=======
+}
+
+        // Met à jour un flux
+function updateRSS(RSS $rss) {
+          // Met à jour uniquement le titre et la date
+ $titre = $this->db->quote($rss->titre());
+ $q = "UPDATE RSS SET titre=$titre, date='".$rss->date()."' WHERE url='".$rss->url()."'";
+ try {
+  $r = $this->db->exec($q);
+  if ($r == 0) {
+   die("updateRSS error: no rss updated\n");
+ }
+} catch (PDOException $e) {
+  die("PDO Error :".$e->getMessage());
+}
+} 
+>>>>>>> 70dd507b5cf51a939499f5f3e660a29f078ade64
 
         //////////////////////////////////////////////////////////
         // Methodes CRUD sur Nouvelle

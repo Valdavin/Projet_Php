@@ -13,10 +13,7 @@
           $rss = $dao->createRSS($url);
 
         }
-        var_dump($rss);
-        $dao->updateRSS($rss);
-        var_dump($rss);
+
         // Mise à jour du flux
-        $rss->update();
-        //var_dump($rss); 
+        $rss->update(); 
 ?>

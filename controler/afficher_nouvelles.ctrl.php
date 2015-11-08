@@ -5,22 +5,10 @@
 // PARTIE RECUPERATION DES DONNEES
 //////////////////////////////////////////////////////////////////////////////
 // Récupération des informations de la query string
-if (isset($id)) {
-	require_once('../model/RSS.class.php');
-	require_once('../model/DAO.class.php');
-	require_once('../model/Nouvelle.class.php');
-	$dao=new DAO();
-  	$rss = new RSS();
-  	$rss = $dao->readRSSfromID($id);
-  	if ($rss != null) {
-  		$rss->update();
-  		$nouvelles = $rss->nouvelles();
-  	} else {
-  		$error = "afficher_nouvelles.ctrl.php : ID introuvable";
-  	}
-  	
+if (isset($_GET['id'])) {
+  $id = $_GET['id'];
 } else {
-  $error = "afficher_nouvelles.ctrl.php : Pas d'ID";
+  $error = "";
 }
 
 
@@ -37,7 +25,7 @@ if (isset($id)) {
 
 // Choix de la vue en fonction de l'état des variables
 if (!isset($error)) {
-	include("../view/afficher_nouvelles.view.php");	
+	include("../view/affichage_flux.view.php");	
 } else {
 	$data['error'] = $error;
 	include("../view/error.view.php");
